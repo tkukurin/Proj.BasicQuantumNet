@@ -1,0 +1,9 @@
+
+
+grammar_get.base = 'grammar.cfg'
+grammar_get.production_fnames = [
+  'productions_cook.cfg',
+  'productions_it.cfg'
+]
+output.output_file = 'generated.out'
+

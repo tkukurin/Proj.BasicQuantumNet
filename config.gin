@@ -1,9 +1,10 @@
 
 
-grammar_get.base = 'grammar.cfg'
+grammar_get.base_grammar_fname = 'grammar.cfg'
 grammar_get.production_fnames = [
   'productions_cook.cfg',
   'productions_it.cfg'
 ]
-output.output_file = 'generated.out'
+grammar_get.sents_per_production = 25
+output.output_dir = 'data'
 

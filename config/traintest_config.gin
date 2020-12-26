@@ -1,0 +1,12 @@
+
+train.n_epochs = 10
+train.seed = 9999
+
+train.hidden_dim_sweep = [5,]
+test.hidden_dim = 5
+
+train.out_dir = 'out'
+test.out_dir = 'out'
+
+
+# vim:set syntax=python:

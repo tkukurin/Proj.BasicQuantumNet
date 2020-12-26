@@ -1,0 +1,12 @@
+
+
+grammar_get.base_grammar_fname = 'grammar/productions_base.cfg'
+grammar_get.domain_grammar_fnames = [
+  'grammar/productions_cook.cfg',
+  'grammar/productions_it.cfg'
+]
+grammar_get.sents_per_domain = 150
+
+output.output_dir = 'data'
+output.train_size = 0.8
+

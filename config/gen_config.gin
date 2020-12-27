@@ -9,4 +9,5 @@ grammar_get.sents_per_domain = 150
 
 output.output_dir = 'data'
 output.train_size = 0.8
+output.seed = 42
 

@@ -52,7 +52,7 @@ def jsonload(fname: type.TFile):
 
 class Vocab:
   PAD = '<pad>'
-  SPECIAL = {PAD}
+  SPECIAL = frozenset([PAD])
   SEPARATOR='\t'
 
   @classmethod
@@ -86,12 +86,12 @@ class Vocab:
     self.special = special
     self.words = words or {k:i for i, k in enumerate(self.special)}
 
-  def _new(self):
+  def _newid(self):
     return len(self.words)
 
   def add(self, word):
     if word not in self.words:
-      self.words[word] = self._new()
+      self.words[word] = self._newid()
     return self.words[word]
 
   def get(self, word):

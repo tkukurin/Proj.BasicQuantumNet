@@ -82,7 +82,8 @@ class Trainer:
 
   def train_loop(self, data_dir, n_epochs, optimizer, scheduler=None):
     '''Run training loop for n_epochs.
-    Trainer state will be updated to the best model, as evaluated on the dev set.
+    Trainer state will be updated to the best model state (as determined by dev
+    set performance).
     '''
     train_loader = torchdata.DataLoader(
       data.SentPairData(data_dir/'train.tsv'),
@@ -135,8 +136,8 @@ def train(
   tracess = []
   best_trainer = None
   best_loss = util.INF
+  vocab = util.Vocab.load(data_dir/'vocab.txt')
   for hidden_dim in hidden_dim_sweep:
-    vocab = util.Vocab.load(data_dir/'vocab.txt')
     model = Model(hidden_dim=hidden_dim, vocab=vocab, out_dim=2)
     loss_fn = nn.CrossEntropyLoss()
     optimizer = Optimizer(model.parameters(), lr=1e-4)

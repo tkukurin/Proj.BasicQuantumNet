@@ -44,15 +44,17 @@ def output(
     output_dir: util.type.TFile,
     class_to_sents: TNameToSents,
     separator='\t',
-    train_size=0.8):
+    train_size=0.8,
+    seed=42):
   sents = list(it.chain(*[
     [(' '.join(s), name) for s in sents]
     for name, sents in class_to_sents.items()
   ]))
 
   sents_train, sents_test = train_test_split(
-    sents, train_size=train_size, shuffle=True)
-  sents_dev, sents_test = train_test_split(sents_test, train_size=0.5)
+    sents, train_size=train_size, shuffle=True, random_state=seed)
+  sents_dev, sents_test = train_test_split(
+    sents_test, train_size=0.5, random_state=seed)
 
   gen_samples = lambda xs: [
     (s1, s2, int(l1 == l2)) for (s1, l1), (s2, l2) in it.combinations(xs, 2)]
